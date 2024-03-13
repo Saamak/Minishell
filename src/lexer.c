@@ -6,6 +6,10 @@ int	find_token(t_lst *lst, char *str, t_parse *parse)
 		return (-1);
 	if (str[0] == '|')
 		lst->token = PIPE;
+	else if (str[0] == '<')
+		lst->token = CHEVRON_IN;
+	else if (str[0] == '>')
+		lst->token = CHEVRON_OUT;
 	else if (lst->prev != NULL && lst->prev->token == CHEVRON_IN)
 		lst->token = INFILE;
 	else if (lst->prev != NULL && lst->prev->token == CHEVRON_OUT)
@@ -14,10 +18,6 @@ int	find_token(t_lst *lst, char *str, t_parse *parse)
 		lst->token = ARGS;
 	else if (lst->prev != NULL && lst->prev->token == ARGS)
 		lst->token = ARGS;
-	else if (str[0] == '<')
-		lst->token = CHEVRON_IN;
-	else if (str[0] == '>')
-		lst->token = CHEVRON_OUT;
 	else
 		lst->token = CMD;
 	parse->is_args = 1;
