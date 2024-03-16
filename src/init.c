@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 21:14:36 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/03/13 15:03:00 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/03/16 21:23:54 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,12 @@ t_lst	*init_lst(t_lst *lst)
 t_node	*init_nodes(t_node *node)
 {
 	node = malloc(sizeof(t_node));
+	if (!node)
+		return (NULL);
 	node->nb_cmd_in_block = 0;
 	node->file_in = NULL;
 	node->file_out = NULL;
+	node->prev = NULL;
 	return (node);
 }
+

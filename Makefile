@@ -6,7 +6,7 @@
 #    By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 16:43:36 by ppitzini          #+#    #+#              #
-#    Updated: 2024/03/13 14:53:55 by ppitzini         ###   ########.fr        #
+#    Updated: 2024/03/13 17:13:47 by ppitzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC	= ./src/main \
 					./src/free_function \
 					./src/exits \
 					./src/to_nodes \
-					./src/print_it
+					./src/print_it 
 CC	= cc
 
 CFLAGS	= -Wall -Wextra -Werror -g

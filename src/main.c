@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:30:58 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/03/13 15:14:01 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:47:40 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int main(void)
 	node = NULL;
 	parse = NULL;
 	lst = NULL;
-	node = init_nodes(node);
 	lst = init_lst(lst);
 	parse = init_t_parse(parse);
+	node = init_nodes(node);
 	prompt = YELLOW"ZiziShellv1>"RESET;
 	while (1)
 	{
@@ -36,8 +36,10 @@ int main(void)
 			printf("number of blocs : %d\n", parse->nb_blocks);
 			parse->args = ft_splitting(input, parse);
 			first_put_lst(&lst, parse);
-			// to_node(&lst, &node);
+			to_node(&lst, &node);
+			print_node(node);
 		}
+		free_list(&lst);
 		parse->nb_blocks = 0;
 		add_history(input);
 	}

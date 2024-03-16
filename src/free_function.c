@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 20:18:48 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/03/13 15:02:32 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:35:37 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,3 +40,18 @@ void	free_list(t_lst **head)
 		current = (*head);
 	}
 }
+
+void	free_node(t_node **head)
+{
+	t_node	*current;
+
+	current = (*head);
+	while ((*head) != NULL)
+	{
+		printf("freeing %s\n", (*head)->file_in);
+		(*head) = (*head)->next;
+		free(current);
+		current = (*head);
+	}
+}
+

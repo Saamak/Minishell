@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:04:21 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/03/13 15:06:04 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/03/16 20:57:42 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_node
 	int		nb_cmd_in_block;
 	char	*file_in;
 	char	*file_out;
+	struct s_node	*next;
+	struct s_node	*prev;
 }	t_node;
 
 typedef enum s_enum
@@ -77,9 +79,11 @@ char		*my_strncpy(char *dest, char *src, int n);
 // UTILS
 t_parse		*init_t_parse(t_parse *parse);
 void		print_parse(t_parse *parse);
-void		print_list2(t_node *node);
+void		print_node(t_node *node);
+void		print_list(t_lst *lst);
 void		free_tab(t_parse *parse);
 void		free_list(t_lst **head);
+void		free_node(t_node **head);
 int			count_w(char *s);
 int			ft_strcmp(const char *str1, const char *str2);
 int			is_alpha(char c);
@@ -103,12 +107,14 @@ t_node		*init_nodes(t_node *node);
 void		process_first_token(t_lst **lst, t_parse *parse, int *i);
 void		process_remaining_tokens(t_lst **lst, t_parse *parse, int *i);
 void		first_put_lst(t_lst **lst, t_parse *parse);
-void		print_list(t_lst *lst);
 
 t_node		*init_commands(t_node *node);
 int			find_token(t_lst *lst, char *str, t_parse *parse);
 void		error_lexer(t_lst *lst, t_parse *parse);
 const char	*get_token_name(int token);
 void		to_node(t_lst **lst, t_node **node);
-
+char		*infile_before(t_lst *lst);
+char		*infile_after(t_lst *lst);
+char		*is_outfile_before(t_lst *lst);
+char		*is_outfile_after(t_lst *lst);
 #endif
