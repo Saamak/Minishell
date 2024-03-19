@@ -1,6 +1,15 @@
-libft
-Makefile
-Minishell
-out
-src
-vsup
+{
+	readline
+	Memcheck:Leak
+	...
+	fun:readline
+	...
+}
+
+{
+	readline
+	Memcheck:Leak
+	...
+	fun:add_history
+	...
+}

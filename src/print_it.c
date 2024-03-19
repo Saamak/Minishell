@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:54:10 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/03/15 14:41:45 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/03/19 13:40:47 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,25 @@ void	print_list(t_lst *lst)
 
 void	print_node(t_node *node)
 {
-    t_node	*tmp;
-    int		i;
+	t_node	*tmp;
+	int		i;
 
-    i = 0;
-    tmp = node;
-    while (tmp != NULL)
-    {
-        if (tmp->file_in == NULL) {
-            tmp->file_in = "NULL";
-        }
-        if (tmp->file_out == NULL) {
-            tmp->file_out = "NULL";
-        }
-        printf("Node [%d] : NB_COMMANDS : %d | INFILE : %s | OUTFILE : %s\n", i, tmp->nb_cmd_in_block, tmp->file_in, tmp->file_out);
-        tmp = tmp->next;
-        i++;
-    }
-    printf("END\n");
+	i = 0;
+	tmp = node;
+	while (tmp != NULL)
+	{
+		if (tmp->file_in == NULL) {
+			tmp->file_in = "NULL";
+		}
+		if (tmp->file_out == NULL) {
+			tmp->file_out = "NULL";
+		}
+		printf("\nNode [%d] : NB_COMMANDS : %d | INFILE : %s | OUTFILE : %s\n", i, tmp->nb_cmd_in_block, tmp->file_in, tmp->file_out);
+		// printf("CMD : %s\n", tmp->cmd);
+		tmp = tmp->next;
+		i++;
+	}
+	printf("END\n");
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:30:58 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/03/15 14:47:40 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/03/19 13:41:49 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int main(void)
 			parse->args = ft_splitting(input, parse);
 			first_put_lst(&lst, parse);
 			to_node(&lst, &node);
+			printf("INFILE : %s\n", node->file_in);
 			print_node(node);
 		}
 		free_list(&lst);

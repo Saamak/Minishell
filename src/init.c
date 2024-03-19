@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 21:14:36 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/03/16 21:23:54 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:54:15 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ t_node	*init_nodes(t_node *node)
 	node->file_in = NULL;
 	node->file_out = NULL;
 	node->prev = NULL;
+	node->next = NULL;
+	node->cmd = NULL;
 	return (node);
 }
 
