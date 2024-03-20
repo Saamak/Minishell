@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:04:21 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/03/18 19:19:39 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/03/19 18:46:00 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_node
 	int		nb_cmd_in_block;
 	char	*file_in;
 	char	*file_out;
-	char	***cmd;
+	char	***cmd_args;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
@@ -117,9 +117,10 @@ void		to_node(t_lst **lst, t_node **node);
 char		*infile_before(t_lst *lst);
 char		*infile_after(t_lst *lst);
 char		*is_outfile_before(t_lst *lst);
-char		*is_outfile_after(t_lst *lst);
+char		*is_outfile_after(t_lst *lst, t_node *node);
 
 int			in_next_cmd(t_lst *lst);
 char		*out_next_cmd(t_lst *lst);
 int			next_cmd_exists(t_lst *lst);
+void		cmd_process(t_lst *lst, t_node *node);
 #endif

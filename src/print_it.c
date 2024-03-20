@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:54:10 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/03/19 13:40:47 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/03/19 18:55:09 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ void	print_node(t_node *node)
 {
 	t_node	*tmp;
 	int		i;
+	int 	j;
 
+	j = 0;
 	i = 0;
 	tmp = node;
 	while (tmp != NULL)
@@ -58,7 +60,9 @@ void	print_node(t_node *node)
 			tmp->file_out = "NULL";
 		}
 		printf("\nNode [%d] : NB_COMMANDS : %d | INFILE : %s | OUTFILE : %s\n", i, tmp->nb_cmd_in_block, tmp->file_in, tmp->file_out);
-		// printf("CMD : %s\n", tmp->cmd);
+		// // printf("%d\n", j);
+		// printf("CMD : %s\n", tmp->cmd_args[0][0]);
+
 		tmp = tmp->next;
 		i++;
 	}
