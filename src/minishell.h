@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:04:21 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/03/20 07:34:42 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:56:16 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,13 @@
 typedef struct s_node
 {
 	int		nb_cmd_in_block;
+	int 	index;
 	char	*file_in;
 	char	*file_out;
-	char	***cmd_args;
+	int 	append;
+	char 	**to_create;
+	char 	***cmd_args;
+	char 	*heredoc_text;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
@@ -55,11 +59,6 @@ typedef struct s_lst
 	struct s_lst	*next;
 	struct s_lst	*prev;
 }	t_lst;
-
-typedef struct s_outfile_info
-{
-	t_lst *lst;
-} t_outfile_info;
 
 typedef struct s_parse
 {
@@ -122,10 +121,9 @@ void		to_node(t_lst **lst, t_node **node);
 char		*infile_before(t_lst *lst);
 char		*infile_after(t_lst *lst);
 char		*is_outfile_before(t_lst *lst);
-char		*is_outfile_after(t_lst *lst, t_node *node, t_outfile_info *info);
+char		*is_outfile_after(t_lst *lst, t_node *node);
 
 int			in_next_cmd(t_lst *lst);
 char		*out_next_cmd(t_lst *lst);
 int			next_cmd_exists(t_lst *lst);
-void		cmd_process(t_lst *lst, t_node *node, t_outfile_info *info);
 #endif

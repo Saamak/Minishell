@@ -1,15 +1,7 @@
-{
-	readline
-	Memcheck:Leak
-	...
-	fun:readline
-	...
-}
-
-{
-	readline
-	Memcheck:Leak
-	...
-	fun:add_history
-	...
-}
+libft
+Makefile
+marchepas
+Minishell
+out
+src
+vsup

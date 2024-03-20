@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:30:58 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/03/19 18:49:41 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/03/20 20:10:34 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ int main(void)
 		if (checks(input, parse) == 0)
 		{
 			count_blocks(input, parse);
-			printf("number of blocs : %d\n", parse->nb_blocks);
+		//	printf("number of blocs : %d\n", parse->nb_blocks);
 			parse->args = ft_splitting(input, parse);
 			first_put_lst(&lst, parse);
 			to_node(&lst, &node);
-			print_node(node);
+		//	printf("INFILE : %s\n", node->file_in);
+			// print_node(node);
 		}
 		free_list(&lst);
 		parse->nb_blocks = 0;

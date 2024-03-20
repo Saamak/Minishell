@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kprigent <kprigent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 21:14:36 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/03/18 16:54:15 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/03/20 11:54:22 by kprigent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,12 @@ t_node	*init_nodes(t_node *node)
 	if (!node)
 		return (NULL);
 	node->nb_cmd_in_block = 0;
+	node->index = 0;
 	node->file_in = NULL;
 	node->file_out = NULL;
 	node->prev = NULL;
 	node->next = NULL;
-	node->cmd = NULL;
+	node->cmd_args = NULL;
 	return (node);
 }
 
