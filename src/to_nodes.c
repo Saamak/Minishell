@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:13:21 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/03/19 20:41:39 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/03/20 08:04:38 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	to_node(t_lst **lst, t_node **node)
 {
 	t_lst    *first;
 	t_node    *first_node;
+	t_outfile_info *info;
 	int        i;
 
 	i = 0;
@@ -30,14 +31,22 @@ void	to_node(t_lst **lst, t_node **node)
 	while ((*lst) != NULL)
 	{
 		printf("Token : %s\n", get_token_name((*lst)->token));
-		if((*lst)->token == CMD) // trouver 1er cmd
+		if((*lst)->token == CMD)
 		{
-			cmd_process(*lst, *node);
-			(*node)->next = malloc(sizeof(t_node));
-			(*node)->next->prev = *node;
-			(*node) = (*node)->next;
-			(*node)->next = NULL;
-
+			info = malloc(sizeof(t_outfile_info));
+			cmd_process(*lst, *node, info);
+			if(info->lst != NULL)
+    			*lst = info->lst;
+			printf("lst->cmd : %s\n", (*lst)->cmd);
+			free(info);
+			printf("lst-next->cmd : %s\n", (*lst)->next->cmd);
+			if(next_cmd_exists((*lst)->next))
+			{
+				(*node)->next = malloc(sizeof(t_node));
+				(*node)->next->prev = *node;
+				(*node) = (*node)->next;
+				(*node)->next = NULL;
+			}
 		}
 		*lst = (*lst)->next;
 	}
@@ -45,16 +54,15 @@ void	to_node(t_lst **lst, t_node **node)
 	(*node) = first_node;
 }
 
-void	cmd_process(t_lst *lst, t_node *node)
+void	cmd_process(t_lst *lst, t_node *node, t_outfile_info *info)
 {
 	node->file_in = infile_after(lst);
 	if (!node->file_in)
 		node->file_in = infile_before(lst);
 
-	node->file_out = is_outfile_after(lst, node);
+	node->file_out = is_outfile_after(lst, node, info);
 	if(!(node->file_out))
 		node->file_out = is_outfile_before(lst);
-
 	return ;
 }
 
@@ -118,7 +126,7 @@ char	*is_outfile_before(t_lst *lst)
 	return (NULL);
 }
 
-char	*is_outfile_after(t_lst *lst, t_node *node)
+char	*is_outfile_after(t_lst *lst, t_node *node, t_outfile_info *info)
 {
 	t_lst	*tmp;
 	tmp =	lst;
@@ -158,11 +166,21 @@ char	*is_outfile_after(t_lst *lst, t_node *node)
 			file = tmp->cmd;
 		}
 		if (tmp->token == INFILE && pipe == 1)
+		{
+			info->lst = tmp;
 			return (file);
+		}
 		if (tmp->token == PIPE && file)
+		{
+			printf("DD");
+			info->lst = tmp;
 			return (file);
+		}
 		tmp = tmp->next;
 	}
+	printf("DD");
+	printf("lst->cmd AFTER : %s\n", tmp->token);
+	info->lst = tmp;
 	return (file);
 }
 
