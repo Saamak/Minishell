@@ -16,6 +16,8 @@ SRC 	   = ft_strlen \
 			 ft_strdup \
 			 ft_atoi \
 			 ft_strnstr \
+			 ft_strlcat \
+			 ft_strlcpy \
 			 ft_memmove \
 			 ft_memcmp \
 			 ft_memchr \
@@ -27,6 +29,9 @@ SRC 	   = ft_strlen \
 			 ft_strmapi \
 			 ft_itoa \
 			 ft_strjoin \
+			 ft_substr \
+			 ft_strtrim \
+			 ft_split \
 
 SRCBONUS   = ft_lstnew \
 			 ft_lstadd_front \

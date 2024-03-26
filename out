@@ -1,7 +1,10 @@
+bultins
+includes
 libft
 Makefile
-marchepas
-Minishell
+mini_shell
 out
-src
-vsup
+out1
+out2
+src_exec
+src_parsing
